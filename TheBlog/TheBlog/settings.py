@@ -64,6 +64,9 @@ MIDDLEWARE = [
 
 ALLOWED_HOSTS = ['*', '.onrender.com']
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend', 'build', 'static')
+]
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -104,9 +107,6 @@ TEMPLATES = [
 ]
 
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/build/static')
-]
 
 WSGI_APPLICATION = 'TheBlog.wsgi.application'
 
