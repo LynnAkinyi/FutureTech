@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
 set -o errexit
 
-python -m pip install --upgrade pip
+# Specify Python version explicitly
+python3 -m pip install --upgrade pip
+
+# Create and activate virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Install requirements
 pip install -r requirements.txt
 
-python manage.py collectstatic --no-input
-python manage.py migrate
+# Run Django commands
+python3 manage.py collectstatic --no-input
+python3 manage.py migrate
