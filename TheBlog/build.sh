@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -o errexit
 
+# Get absolute path to script directory
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$SCRIPT_DIR"
+
 # Specify Python version explicitly
 python3 -m pip install --upgrade pip
 
