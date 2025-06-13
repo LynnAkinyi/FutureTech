@@ -1,20 +1,16 @@
 #!/usr/bin/env bash
 set -o errexit
 
-# Get absolute path to script directory
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd "$SCRIPT_DIR"
+cd "$(dirname "$0")"
 
-# Specify Python version explicitly
+# Install Python packages
 python3 -m pip install --upgrade pip
+python3 -m pip install gunicorn
+python3 -m pip install -r requirements.txt
 
-# Create and activate virtual environment
-python3 -m venv venv
-source venv/bin/activate
+# Verify gunicorn installation
+which gunicorn || echo "Gunicorn not found in PATH"
 
-# Install requirements
-pip install -r requirements.txt
-
-# Run Django commands
+# Django commands
 python3 manage.py collectstatic --no-input
 python3 manage.py migrate
