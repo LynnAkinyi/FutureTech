@@ -9,6 +9,7 @@ const Login = () => {
     password: "",
   });
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     setCredentials({
@@ -19,19 +20,25 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Clear previous errors
-
     try {
       const response = await api.login(credentials);
-      console.log("Login success:", response); // Debug log
+      console.log("Login component response:", response); // Debug log
 
       if (response.token) {
-        localStorage.setItem("token", response.token);
-        navigate("/dashboard");
+        setSuccess(true);
+        setError("");
+        console.log("Setting success state:", true); // Debug log
+
+        // Increase delay
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
+      } else {
+        setError("Login failed - no token received");
       }
     } catch (err) {
-      console.error("Login component error:", err); // Debug log
-      setError(typeof err === "string" ? err : "Login failed");
+      console.error("Login error:", err);
+      setError(err.message || "Invalid credentials");
     }
   };
 
@@ -41,6 +48,7 @@ const Login = () => {
       <div className="auth-form">
         <h2>Login</h2>
         {error && <div className="error">{error}</div>}
+        {success && <div className="success">Login successful!</div>}
         <form onSubmit={handleSubmit}>
           <input
             type="text"

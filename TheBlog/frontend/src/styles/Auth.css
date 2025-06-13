@@ -1,4 +1,3 @@
-/* Blog/blog-frontend/src/styles/Auth.css */
 .auth-form {
   /* max-width: 400px;
   margin: 2rem auto;
@@ -76,7 +75,6 @@ body {
     background-attachment: fixed;
   }
 
-  /* Optional overlay for better readability */
   .container::before {
     content: "";
     position: absolute;
@@ -139,24 +137,67 @@ body {
   margin-bottom: 1rem;
 }
 
-nav {
+.nav-header {
   padding: 1rem;
-  background-color: #f8f9fa;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-nav ul {
+.nav-links {
   list-style: none;
   display: flex;
-  gap: 1rem;
-  margin: 0;
+  gap: 2rem;
   padding: 0;
 }
 
-nav a {
+.nav-links a {
   text-decoration: none;
   color: #333;
+  font-weight: 500;
 }
 
-nav a:hover {
+.nav-links a:hover {
   color: #007bff;
+}
+
+h1 {
+  color: transparent;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../assets/mac.jpeg");
+  background-size: cover;
+  background-position: center;
+  font-size: 10rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.not-found {
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.not-found h2 {
+  color: #dc3545;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.not-found p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.not-found a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.not-found a:hover {
+  text-decoration: underline;
 }

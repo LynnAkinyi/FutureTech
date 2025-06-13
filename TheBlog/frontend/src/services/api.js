@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = ""; // Remove /api since it's included in baseURL
+const BASE_URL = "";
 
 const API_ENDPOINTS = {
   LOGIN: "/api/login/",
@@ -35,19 +35,11 @@ const api = {
         API_ENDPOINTS.LOGIN,
         credentials
       );
-      console.log("Login response:", response.data); // Debug log
-
-      if (response.data && response.data.token) {
-        return response.data;
-      } else {
-        throw new Error("Invalid response format");
-      }
+      console.log("Login response:", response.data);
+      return response.data;
     } catch (error) {
-      console.error("Login error:", error); // Debug log
-      if (error.response) {
-        throw error.response.data;
-      }
-      throw new Error("Network or server error");
+      console.error("API error:", error);
+      throw error.response?.data || error;
     }
   },
 };

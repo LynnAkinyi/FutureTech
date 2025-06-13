@@ -64,13 +64,6 @@ MIDDLEWARE = [
 
 ALLOWED_HOSTS = ['*', '.onrender.com']
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend', 'build', 'static')
-]
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 CORS_ALLOWED_ORIGINS = [
     "https://get-blog-frontend.onrender.com",
     "http://localhost:3000",
@@ -107,6 +100,13 @@ TEMPLATES = [
     },
 ]
 
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend', 'build', 'static')
+]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 WSGI_APPLICATION = 'TheBlog.wsgi.application'
