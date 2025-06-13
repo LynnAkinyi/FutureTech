@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 set -o errexit
 
-cd "$(dirname "$0")"
+# Navigate to project root
+cd /Users/lynnakinyi/Desktop/GetBlog/TheBlog
+
+# Clean existing build files
+rm -rf frontend/build/*
+rm -rf staticfiles/*
 
 # Build frontend
 cd frontend
@@ -9,11 +14,17 @@ npm install
 npm run build
 cd ..
 
-# Install Python packages
-python3 -m pip install --upgrade pip
-python3 -m pip install gunicorn
-python3 -m pip install -r requirements.txt
+# Verify build directory exists
+if [ ! -d "frontend/build" ]; then
+    echo "Error: frontend/build directory not found!"
+    exit 1
+fi
 
-# Django commands
-python3 manage.py collectstatic --no-input
-python3 manage.py migrate
+# Collect static files
+python3 manage.py collectstatic --no-input --clear
+
+# Start server
+python3 manage.py runserver
+
+echo "React frontend should be at http://localhost:8000"
+echo "API endpoints should be at http://localhost:8000/api/"

@@ -30,9 +30,6 @@ const Login = () => {
 
   return (
     <div className="container">
-      <div className="right-container">
-        <img src="/images/login-background.jpg" alt="Login Background" />
-      </div>
       <div className="left-container"></div>
       <div className="auth-form">
         <h2>Login</h2>

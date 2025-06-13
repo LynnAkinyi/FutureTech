@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const BASE_URL = "/api";
+const BASE_URL = ""; // Remove /api since it's included in baseURL
 
 const API_ENDPOINTS = {
-  LOGIN: `${BASE_URL}/login/`,
-  REGISTER: `${BASE_URL}/register/`,
+  LOGIN: "/api/login/",
+  REGISTER: "/api/register/",
 };
 
 const axiosInstance = axios.create({
