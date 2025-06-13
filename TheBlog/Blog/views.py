@@ -1,11 +1,22 @@
 from django.shortcuts import render
 from rest_framework import status
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from .serializers import RegisterSerializer
 from django.contrib.auth.models import User
+
+
+@api_view(['GET'])
+def home(request):
+    return Response({
+        'endpoints': {
+            'register': '/api/register/',
+            'login': '/api/login/'
+        }
+    })
 
 class RegisterView(APIView):
     def post(self, request):
