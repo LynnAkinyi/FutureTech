@@ -1,21 +1,20 @@
 #!/usr/bin/env bash
-set -o errexit
 
-# Navigate to TheBlog directory
-cd "$(dirname "$0")"
+# Navigate to project root
+cd /Users/lynnakinyi/Desktop/GetBlog/TheBlog
 
-# Clean existing build files
-rm -rf frontend/build/*
-rm -rf staticfiles/*
-
-# Build frontend
-cd /Users/lynnakinyi/Desktop/GetBlog/TheBlog/frontend || exit
-npm install
+# Test frontend build
+cd frontend
 npm run build
 cd ..
 
-# Django setup
-python3 -m pip install --upgrade pip
-pip install -r requirements.txt
+# Verify build directory
+ls -la frontend/build
+
+# Test Django template serving
 python3 manage.py collectstatic --no-input
-python3 manage.py migrate
+python3 manage.py runserver
+
+# Check in browser:
+echo "Open http://localhost:8000 in browser"
+echo "Should see React frontend instead of API endpoints"
