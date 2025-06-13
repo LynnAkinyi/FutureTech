@@ -1,10 +1,14 @@
 import axios from "axios";
 
-const API_URL = "/api/login/";
-const API_URL = "/api/register/";
+const BASE_URL = "/api";
+
+const API_ENDPOINTS = {
+  LOGIN: `${BASE_URL}/login/`,
+  REGISTER: `${BASE_URL}/register/`,
+};
 
 const axiosInstance = axios.create({
-  baseURL: API_URL,
+  baseURL: BASE_URL,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
@@ -14,10 +18,27 @@ const axiosInstance = axios.create({
 
 const api = {
   register: async (userData) => {
-    return await axiosInstance.post("/register/", userData);
+    try {
+      const response = await axiosInstance.post(
+        API_ENDPOINTS.REGISTER,
+        userData
+      );
+      return response.data;
+    } catch (error) {
+      throw error.response?.data || error;
+    }
   },
+
   login: async (credentials) => {
-    return await axiosInstance.post("/login/", credentials);
+    try {
+      const response = await axiosInstance.post(
+        API_ENDPOINTS.LOGIN,
+        credentials
+      );
+      return response.data;
+    } catch (error) {
+      throw error.response?.data || error;
+    }
   },
 };
 
