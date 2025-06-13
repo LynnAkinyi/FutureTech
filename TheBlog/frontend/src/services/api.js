@@ -35,9 +35,19 @@ const api = {
         API_ENDPOINTS.LOGIN,
         credentials
       );
-      return response.data;
+      console.log("Login response:", response.data); // Debug log
+
+      if (response.data && response.data.token) {
+        return response.data;
+      } else {
+        throw new Error("Invalid response format");
+      }
     } catch (error) {
-      throw error.response?.data || error;
+      console.error("Login error:", error); // Debug log
+      if (error.response) {
+        throw error.response.data;
+      }
+      throw new Error("Network or server error");
     }
   },
 };

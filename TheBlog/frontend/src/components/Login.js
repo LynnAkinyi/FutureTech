@@ -19,12 +19,19 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(""); // Clear previous errors
+
     try {
       const response = await api.login(credentials);
-      localStorage.setItem("token", response.data.token);
-      navigate("/dashboard");
+      console.log("Login success:", response); // Debug log
+
+      if (response.token) {
+        localStorage.setItem("token", response.token);
+        navigate("/dashboard");
+      }
     } catch (err) {
-      setError("Invalid credentials");
+      console.error("Login component error:", err); // Debug log
+      setError(typeof err === "string" ? err : "Login failed");
     }
   };
 
