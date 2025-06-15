@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className="main-header">
       <div className="header-content">
@@ -11,7 +13,16 @@ const Header = () => {
           </Link>
         </div>
 
-        <nav className="main-nav">
+        <button
+          className="menu-toggle"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav className={`main-nav ${isMenuOpen ? "active" : ""}`}>
           <ul>
             <li>
               <Link to="/">Home</Link>

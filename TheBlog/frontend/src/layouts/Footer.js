@@ -1,4 +1,3 @@
-// filepath: /Users/lynnakinyi/Desktop/GetBlog/TheBlog/frontend/src/layouts/Footer.js
 import React from "react";
 
 const Footer = () => {
