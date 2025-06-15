@@ -127,7 +127,82 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-  text-align: center;
+  text-align: left;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 3rem 0;
+}
+
+.footer-column h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom-left a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom-left a:hover {
+  color: #fff;
+}
+
+.footer-bottom-left .divider {
+  margin: 0 1rem;
+  color: #666;
+}
+
+.footer-bottom-center {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-bottom-center a {
+  color: #ccc;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom-center a:hover {
+  color: #fff;
+}
+
+.footer-bottom-right {
+  color: #ccc;
 }
 
 /* Auth Form Styles */
@@ -367,6 +442,22 @@ h1 {
 
   .contact-section {
     display: none;
+  }
+
+  .footer-columns {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+
+  .footer-column {
+    text-align: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
   }
 }
 
