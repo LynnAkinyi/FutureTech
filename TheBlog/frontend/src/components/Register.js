@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import api from "../services/api";
-import blogImage from "../assets/mac.jpeg";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -77,6 +76,10 @@ const Register = () => {
           </select>
           <button type="submit">Register</button>
         </form>
+        <div className="register-link">
+          <p>Already have an account?</p>
+          <Link to="/login">Login here</Link>
+        </div>
       </div>
     </div>
   );

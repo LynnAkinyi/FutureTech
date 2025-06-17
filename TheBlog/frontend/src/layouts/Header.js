@@ -36,11 +36,14 @@ const Header = () => {
             <li>
               <Link to="/resources">Resources</Link>
             </li>
+            <li>
+              <Link to="/resources">Contact Us</Link>
+            </li>
           </ul>
         </nav>
 
         <div className="contact-section">
-          <Link to="/contact">Contact Us</Link>
+          <Link to="/login">Login</Link>
         </div>
       </div>
     </header>

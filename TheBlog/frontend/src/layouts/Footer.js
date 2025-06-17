@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-columns">
           <div className="footer-column">
-            <h3>Company</h3>
+            <h3>Home</h3>
             <ul>
               <li>
                 <Link to="/about">About Us</Link>
@@ -23,7 +23,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-column">
-            <h3>Resources</h3>
+            <h3>News</h3>
             <ul>
               <li>
                 <Link to="/blog">Blog</Link>
@@ -38,7 +38,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-column">
-            <h3>Products</h3>
+            <h3>Blogs</h3>
             <ul>
               <li>
                 <Link to="/features">Features</Link>
@@ -53,7 +53,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-column">
-            <h3>Support</h3>
+            <h3>Podcasts</h3>
             <ul>
               <li>
                 <Link to="/contact">Contact</Link>
@@ -68,7 +68,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-column">
-            <h3>Legal</h3>
+            <h3>Resources</h3>
             <ul>
               <li>
                 <Link to="/privacy">Privacy</Link>

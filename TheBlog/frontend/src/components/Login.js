@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import api from "../services/api";
 
 const Login = () => {
@@ -20,25 +20,32 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+
     try {
       const response = await api.login(credentials);
-      console.log("Login component response:", response); // Debug log
 
       if (response.token) {
-        setSuccess(true);
-        setError("");
-        console.log("Setting success state:", true); // Debug log
+        // Store token
+        localStorage.setItem("token", response.token);
 
-        // Increase delay
+        // Show success notification
+        setSuccess(true);
+
+        // Navigate after animation
         setTimeout(() => {
+          setSuccess(false);
           navigate("/dashboard");
-        }, 2000);
+        }, 3000);
       } else {
-        setError("Login failed - no token received");
+        setError("Login failed - Please try again");
       }
     } catch (err) {
-      console.error("Login error:", err);
-      setError(err.message || "Invalid credentials");
+      setError(
+        err.response?.data?.message ||
+          err.message ||
+          "Login failed - Please check your credentials"
+      );
     }
   };
 
@@ -46,7 +53,8 @@ const Login = () => {
     <div className="container">
       <div className="left-container"></div>
       <div className="auth-form">
-        <h2>Login</h2>
+        <h2>Welcome Back!</h2>
+        <p>Please login to your account</p>
         {error && <div className="error">{error}</div>}
         {success && <div className="success">Login successful!</div>}
         <form onSubmit={handleSubmit}>
@@ -68,6 +76,10 @@ const Login = () => {
           />
           <button type="submit">Login</button>
         </form>
+        <div className="register-link">
+          <p>Don't have an account?</p>
+          <Link to="/register">Register here</Link>
+        </div>
       </div>
     </div>
   );
